@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { AnyRecord } from 'dns';
 
 function App() {
   const requestJSON = async (requestPath: any): Promise<any> => {
