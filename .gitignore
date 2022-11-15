@@ -1,7 +1,7 @@
 # Maven
-backend/target/*/
-backend/target/*.original
+target/
 *.class
+package-lock.json
 
 # Log file
 *.log
