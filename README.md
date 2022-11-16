@@ -3,7 +3,7 @@ Team A's App
 
 How to startup this project.
 
-1. Nginx (Proxy-pass app)\
+1. Nginx (Proxy-pass app)
 
     Mac\
     To install nginx on mac please use homebrew. Enter in a terminal 'brew install nginx'.\
