@@ -32,12 +32,11 @@ function App() {
         </button>
         <br/>
         <button
-          onClick={() => {
-            const res = requestJSON('/api/hello', HTTPMethods.GET)
-
-            if (res) {
-              setdata(JSON.stringify(res))
-            }
+          onClick={async () => {
+            const res = await requestJSON('/api/hello', HTTPMethods.GET)
+              if (res) {
+                setdata(JSON.stringify(res))
+              }
           }}
         >
           Test UI (fetch /api/hello)

@@ -1,15 +1,15 @@
 import { HTTPCodes, HTTPMethods } from "./Constants"
 
 const requestJSON = async (requestPath: any, method: HTTPMethods): Promise<any> => {
-  await fetch(requestPath, {
+  return await fetch(requestPath, {
     method,
     headers: {
       "content-type": "application/json"
     }
   })
-    .then((res?: Response) => {
+    .then( async (res?: Response) => {
       if (res?.status === HTTPCodes.OK) {
-        res?.json().then((response) => {
+        return await res?.json().then((response) => {
           return response
         })
       } else {
@@ -17,6 +17,7 @@ const requestJSON = async (requestPath: any, method: HTTPMethods): Promise<any> 
       }
     })
     .catch(console.error)
+  
 }
 
 export default requestJSON
