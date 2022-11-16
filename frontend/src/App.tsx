@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import requestJSON from './typescript/RequestJson/RequestJson';
+import { HTTPMethods } from './typescript/RequestJson/Constants';
 
 //
 //
@@ -8,14 +10,6 @@ import './App.css';
 //
 function App() {
   const [data, setdata] = useState<any>()
-  const requestJSON = async (requestPath: any): Promise<any> => {
-    const response = await fetch(requestPath, {method:"GET"})
-      .then((res?: Response) => {
-        res?.json().then((response) => {setdata(response)})
-      })
-      .catch(console.error)
-    return response
-  }
 
   return (
     <div className="App">
@@ -39,7 +33,11 @@ function App() {
         <br/>
         <button
           onClick={() => {
-            requestJSON('/api/hello')
+            const res = requestJSON('/api/hello', HTTPMethods.GET)
+
+            if (res) {
+              setdata(res)
+            }
           }}
         >
           Test UI (fetch /api/hello)
