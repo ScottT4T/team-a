@@ -4,6 +4,7 @@ Team A's App
 How to startup this project.
 
 1. Nginx (Proxy-pass app)\
+
     Mac\
     To install nginx on mac please use homebrew. Enter in a terminal 'brew install nginx'.\
     This should install nginx onto your mac, then please locate the nginx.conf where this was installed using a terminal (e.g 'cd /opt/homebrew/etc/nginx/')\
