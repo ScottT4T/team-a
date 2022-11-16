@@ -36,13 +36,13 @@ function App() {
             const res = requestJSON('/api/hello', HTTPMethods.GET)
 
             if (res) {
-              setdata(res)
+              setdata(JSON.stringify(res))
             }
           }}
         >
           Test UI (fetch /api/hello)
         </button>
-        <div id="response">{JSON.stringify(data)}</div>
+        <div id="response">{data}</div>
       </header>
     </div>
   );

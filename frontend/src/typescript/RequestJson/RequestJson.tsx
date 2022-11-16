@@ -4,7 +4,7 @@ const requestJSON = async (requestPath: any, method: HTTPMethods): Promise<any> 
   await fetch(requestPath, {
     method,
     headers: {
-      "content-type": 'application/json'
+      "content-type": "application/json"
     }
   })
     .then((res?: Response) => {
