@@ -1,7 +1,12 @@
 import { HTTPCodes, HTTPMethods } from "./Constants"
 
 const requestJSON = async (requestPath: any, method: HTTPMethods): Promise<any> => {
-  await fetch(requestPath, { method })
+  await fetch(requestPath, {
+    method,
+    headers: {
+      "content-type": 'application/json'
+    }
+  })
     .then((res?: Response) => {
       if (res?.status === HTTPCodes.OK) {
         res?.json().then((response) => {
