@@ -46,3 +46,69 @@
     transform: rotate(360deg);
   }
 }
+
+.body {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: 50%;
+  height: 100%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  flex:1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* this adds the "card" effect */
+  text-align: center;
+  background-color: #424242;
+  color: white;
+  height: 500px;
+  width: 300px;
+  border-radius: 25px;
+  margin: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttonsContainer {
+  height: 100px;
+  width: 250px;
+  position: absolute;
+  top: 80%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: none;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  display: flex;
+}
+
+.image {
+  width: 300px;
+  border-radius: 25px 25px 0px 0px;
+}
+
