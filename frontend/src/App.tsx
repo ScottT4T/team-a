@@ -5,6 +5,8 @@ import { HTTPMethods } from './typescript/RequestJson/Constants';
 import TinderCard from 'react-tinder-card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import { faRankingStar } from "@fortawesome/free-solid-svg-icons";
+
 import getPets from './typescript/Components/Requests/getPets';
 import { Pet } from './typescript/Types';
 import ratePet from './typescript/Components/Requests/ratePet';
@@ -54,7 +56,6 @@ function App() {
   }
 
   const removePetFromStack = (id: string, direction: string) => {
-    console.log('remove')
     if(!isLoading) {
       setIsLoading(true);
       
@@ -74,6 +75,9 @@ function App() {
 
   return (
     <div className="body">
+      <button className="button" style={{position: 'fixed', bottom: 200, }} onClick={() => {setShowHighscores(!showHighscores)}}>
+        <FontAwesomeIcon icon={showHighscores ? faCircleXmark :faRankingStar} size="4x" className="CustomColor" color="#f6cb0d"/>
+      </button>
       {
         showHighscores ? (
           <Highscores />
@@ -81,7 +85,7 @@ function App() {
           <div className="main">
           <>
             {!pets.length && <p style={{ color: 'white'}}>Sorry, no pets left</p>}
-            {pets.length && pets?.map(({ id, imageURL, name }, index) => (
+            {pets.length && pets?.map(({ id, imageURL, name }) => (
               <>
               <TinderCard onCardLeftScreen={(direction) => removePetFromStack("",direction)} preventSwipe={['up', 'down']}>
                 <div className="card">
