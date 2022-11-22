@@ -75,9 +75,15 @@ function App() {
 
   return (
     <div className="body">
-      <button className="button" style={{position: 'fixed', top: 200 }} onClick={() => {setShowHighscores(!showHighscores)}}>
-        <FontAwesomeIcon icon={showHighscores ? faCircleXmark :faRankingStar} size="4x" className="CustomColor" color="#f6cb0d"/>
-      </button>
+      <div>
+        <button className="button" style={{position: 'fixed', top: 200 }} onClick={() => {setShowHighscores(!showHighscores)}}>
+          <FontAwesomeIcon icon={showHighscores ? faCircleXmark :faRankingStar} size="4x" className="CustomColor" color="#f6cb0d"/>
+        </button>
+      </div>
+      <div className="title">
+        <h1>Rate your</h1>
+        <h2>PETS</h2>
+      </div>
       {
         showHighscores ? (
           <Highscores />

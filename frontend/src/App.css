@@ -4,7 +4,7 @@
 }
 
 @font-face {
-  font-family: 'NerkOne';
+  font-family: 'NerkoOne';
   src: url('./fonts/NerkoOne-Regular.ttf');
 }
 
@@ -52,6 +52,7 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgb(2,0,36);
@@ -60,13 +61,13 @@
 
 h1 {
   font-family: 'PaytoneOne';
-  font-size: 28px;
-  color: #424242;
+  font-size: 60px;
+  color: #ffffff;
 }
 
 h2 {
   font-family: 'NerkoOne';
-  font-size: 28px;
+  font-size: 72px;
   color: #00DDFB;
 }
 
@@ -127,6 +128,7 @@ h2 {
 }
 
 .title {
+  padding-top: 30px;
   position: relative;
   display: block;
   text-align: center;
