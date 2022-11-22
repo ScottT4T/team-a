@@ -40,16 +40,16 @@ const petsMock = [
 ]
 
 function App() {
-  const [pets, setPets] = useState<any>(petsMock)
+  const [pets, setPets] = useState<any>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [showHighscores, setShowHighscores] = useState<boolean>(true)
+  const [showHighscores, setShowHighscores] = useState<boolean>(false)
 
   const fetchPets = () => {
     setIsLoading(true)
     getPets().then((res: Pet[]) => {
       console.log(res)
       if(res) {
-        // setPets(res)
+        setPets(res)
       }
       setIsLoading(false)
     })
@@ -75,15 +75,9 @@ function App() {
 
   return (
     <div className="body">
-      <div>
-        <button className="button" style={{position: 'fixed', top: 200 }} onClick={() => {setShowHighscores(!showHighscores)}}>
-          <FontAwesomeIcon icon={showHighscores ? faCircleXmark :faRankingStar} size="4x" className="CustomColor" color="#f6cb0d"/>
-        </button>
-      </div>
-      <div className="title">
-        <h1>Rate your</h1>
-        <h2>PETS</h2>
-      </div>
+      <button className="button" style={{position: 'fixed', top: 200, left: '%' }} onClick={() => {setShowHighscores(!showHighscores)}}>
+        <FontAwesomeIcon icon={showHighscores ? faCircleXmark :faRankingStar} size="4x" className="CustomColor" color="#f6cb0d"/>
+      </button>
       {
         showHighscores ? (
           <Highscores />

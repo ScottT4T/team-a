@@ -43,11 +43,11 @@ const Highscores = () => {
     }
   ]
   
-  const trimmedPetsMock = petsMock.slice(0, 3)
+  const trimmedHighscores = highscores.slice(0, 3)
 
   return (
     <div className='highscores'>
-      {trimmedPetsMock.length && trimmedPetsMock?.map((pet: Pet, index: number) => (
+      {trimmedHighscores.length && trimmedHighscores?.map((pet: Pet, index: number) => (
         <div
           className={`medal-card medal-${index + 1}`}
           style={{
