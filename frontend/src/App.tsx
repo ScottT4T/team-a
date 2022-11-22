@@ -64,6 +64,10 @@ function App() {
 
   return (
     <div className="body">
+      <div className='title'>
+        <h1>Rate your</h1>
+        <h2>Pets</h2>
+      </div>
        <div className="main">
           {pets?.map(({ id, url, name }) => (
             <TinderCard onCardLeftScreen={(direction) => removePetFromStack(id, direction)} preventSwipe={['up', 'down']}>
