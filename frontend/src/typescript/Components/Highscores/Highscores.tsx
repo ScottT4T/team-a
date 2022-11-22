@@ -53,11 +53,8 @@ const Highscores = () => {
           style={{
             backgroundImage: `url(${pet.imageURL})`,
           }}
-          // style={{ 
-          //   backgroundImage: `url("https://via.placeholder.com/500")` 
-          // }}
         >
-          <div className='medal-title '>{pet.name}</div>
+          <div className='medal-title '>{pet.name} - {pet.likeCount}</div>
         </div>
       ))}
     </div>
