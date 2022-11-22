@@ -40,7 +40,7 @@ const petsMock = [
 function App() {
   const [pets, setPets] = useState<any>(petsMock)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [showHighscores, setShowHighscores] = useState<boolean>(false)
+  const [showHighscores, setShowHighscores] = useState<boolean>(true)
 
   const fetchPets = () => {
     setIsLoading(true)
@@ -74,10 +74,11 @@ function App() {
 
   return (
     <div className="body">
-       <div className="main">
-        {showHighscores ? (
+      {
+        showHighscores ? (
           <Highscores />
         ) : (
+          <div className="main">
           <>
             {!pets.length && <p style={{ color: 'white'}}>Sorry, no pets left</p>}
             {pets.length && pets?.map(({ id, imageURL, name }, index) => (
@@ -102,9 +103,10 @@ function App() {
                 )}
               </>
             ))}
-          </>
-        )}    
+          </>    
       </div>
+        )
+      }
     </div>
   );
 }
