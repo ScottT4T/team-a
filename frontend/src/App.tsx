@@ -5,6 +5,10 @@ import { HTTPMethods } from './typescript/RequestJson/Constants';
 import TinderCard from 'react-tinder-card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import getPets from './typescript/Components/Requests/getPets';
+import { Pet } from './typescript/Types';
+import ratePet from './typescript/Components/Requests/ratePet';
+import Highscores from './typescript/Components/Highscores/Highscores';
 
 const petsMock = [
   {
@@ -36,54 +40,70 @@ const petsMock = [
 function App() {
   const [pets, setPets] = useState<any>(petsMock)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [showHighscores, setShowHighscores] = useState<boolean>(false)
 
-  console.log(pets)
+  const fetchPets = () => {
+    setIsLoading(true)
+    getPets().then((res: Pet[]) => {
+      console.log(res)
+      if(res) {
+        setPets(res)
+      }
+      setIsLoading(false)
+    })
+  }
 
   const removePetFromStack = (id: string, direction: string) => {
     console.log('remove')
     if(!isLoading) {
       setIsLoading(true);
-      // setPets([...pets.slice(1)])
+      
+      ratePet(id, direction === 'right').then(res => {
+        setPets((pets) => pets.filter((pet) => pet.id !== id));
+        setIsLoading(false);
+      })
 
-      setPets((pets) => pets.filter((pet, index) => pet.id !== id));
-
-      // post request with direction
-      setIsLoading(false);
     }
   }
 
   useEffect((() => {
-    // setIsLoading(true)
-    // fetch and store
+    if(!isLoading) {
+      fetchPets()
+    }
   }), [])
 
   return (
     <div className="body">
        <div className="main">
-          {!pets.length && <p style={{ color: 'white'}}>Sorry, no pets left</p>}
-          {pets?.map(({ id, imageURL, name }, index) => (
-            <>
-            <TinderCard onCardLeftScreen={(direction) => removePetFromStack("",direction)} preventSwipe={['up', 'down']}>
-              <div className="card">
-                <div className="image">
-                  <img draggable="false" src={imageURL} alt="pet" className="image"/>
-                </div>
-                <p style={{ margin: 8, fontSize: 30}}>{name}</p>
-              </div> 
-            </TinderCard>
-            {true && (
-                <div className="buttonsContainer">
-                  <button className="button" onClick={() => removePetFromStack(id,'left')}>
-                    <FontAwesomeIcon icon={faCircleXmark} size="4x" className="CustomColor" color="#cd0000"/>
-                  </button>
-                  <button className="button" onClick={() => removePetFromStack(id,'right')}>
-                    <FontAwesomeIcon icon={faHeart} size="4x" className="CustomColor" color="#00cd15"/>
-                  </button>
-                </div>
-              )}
-            </>
-          ))}
-          
+        {showHighscores ? (
+          <Highscores />
+        ) : (
+          <>
+            {!pets.length && <p style={{ color: 'white'}}>Sorry, no pets left</p>}
+            {pets.length && pets?.map(({ id, imageURL, name }, index) => (
+              <>
+              <TinderCard onCardLeftScreen={(direction) => removePetFromStack("",direction)} preventSwipe={['up', 'down']}>
+                <div className="card">
+                  <div className="image">
+                    <img draggable="false" src={imageURL} alt="pet" className="image"/>
+                  </div>
+                  <p style={{ margin: 8, fontSize: 30}}>{name}</p>
+                </div> 
+              </TinderCard>
+              {true && (
+                  <div className="buttonsContainer">
+                    <button className="button" onClick={() => removePetFromStack(id,'left')}>
+                      <FontAwesomeIcon icon={faCircleXmark} size="4x" className="CustomColor" color="#cd0000"/>
+                    </button>
+                    <button className="button" onClick={() => removePetFromStack(id,'right')}>
+                      <FontAwesomeIcon icon={faHeart} size="4x" className="CustomColor" color="#00cd15"/>
+                    </button>
+                  </div>
+                )}
+              </>
+            ))}
+          </>
+        )}    
       </div>
     </div>
   );

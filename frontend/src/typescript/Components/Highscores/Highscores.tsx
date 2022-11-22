@@ -1,11 +1,11 @@
-import react, { useState } from "react"
+import React, { useState } from "react"
 import { useEffect } from "react"
 import { Pet } from "../../Types"
 import getHighscores from "../Requests/getHighscores"
 
-import './Highscores.scss'
+import './Highscores.css'
 
-const highscores = () => {
+const Highscores = () => {
   const [highscores, setHighscores] = useState<Pet[]>([])
 
   useEffect(() => {
@@ -32,4 +32,4 @@ const highscores = () => {
   )
 }
 
-export default highscores
+export default Highscores
