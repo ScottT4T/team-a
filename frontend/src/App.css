@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'PaytoneOne';
+  src: url('./fonts/PaytoneOne-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'NerkOne';
+  src: url('./fonts/NerkoOne-Regular.ttf');
+}
+
 .App {
   text-align: center;
 }
