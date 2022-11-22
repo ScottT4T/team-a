@@ -4,19 +4,7 @@ import requestJSON from './typescript/RequestJson/RequestJson';
 import { HTTPMethods } from './typescript/RequestJson/Constants';
 import TinderCard from 'react-tinder-card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faHeart } from '@fortawesome/fontawesome-free-regular'
 import { faHeart, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
-
-
-
-
-const onSwipe = (direction) => {
-  console.log('You swiped: ' + direction)
-}
-
-const onCardLeftScreen = (myIdentifier) => {
-  console.log(myIdentifier + ' left the screen')
-}
 
 const petsMock = [
   {
@@ -50,24 +38,19 @@ function App() {
   const removePetFromStack = (id: number, direction: string) => {
     if(!isLoading) {
       setIsLoading(true);
-      setPets(
-        pets.filter(pet => pet.id !== id)
-      )
+      setPets(pets.slice(1))
       // post request with direction
       setIsLoading(false);
     }
   }
 
   useEffect((() => {
+    // setIsLoading(true)
     // fetch and store
   }), [])
 
   return (
     <div className="body">
-      <div className='title'>
-        <h1>Rate your</h1>
-        <h2>Pets</h2>
-      </div>
        <div className="main">
           {pets?.map(({ id, url, name }) => (
             <TinderCard onCardLeftScreen={(direction) => removePetFromStack(id, direction)} preventSwipe={['up', 'down']}>
@@ -75,15 +58,15 @@ function App() {
                 <div className="image">
                   <img draggable="false" src={url} alt="pet" className="image"/>
                 </div>
-                <p style={{ margin: 0, fontSize: 30}}>{name}</p>
+                <p style={{ margin: 8, fontSize: 30}}>{name}</p>
               </div> 
             </TinderCard>
           ))}
           <div className="buttonsContainer">
-            <button className="button">
+            <button className="button" onClick={() => removePetFromStack(pets[0].id, 'left')}>
               <FontAwesomeIcon icon={faCircleXmark} size="4x" className="CustomColor" color="#cd0000"/>
             </button>
-            <button className="button">
+            <button className="button" onClick={() => removePetFromStack(pets[0].id, 'right')}>
                 <FontAwesomeIcon icon={faHeart} size="4x" className="CustomColor" color="#00cd15"/>
             </button>
           </div>
