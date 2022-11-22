@@ -49,7 +49,7 @@ function App() {
     getPets().then((res: Pet[]) => {
       console.log(res)
       if(res) {
-        setPets(res)
+        // setPets(res)
       }
       setIsLoading(false)
     })
@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="body">
-      <button className="button" style={{position: 'fixed', bottom: 200, }} onClick={() => {setShowHighscores(!showHighscores)}}>
+      <button className="button" style={{position: 'fixed', top: 200 }} onClick={() => {setShowHighscores(!showHighscores)}}>
         <FontAwesomeIcon icon={showHighscores ? faCircleXmark :faRankingStar} size="4x" className="CustomColor" color="#f6cb0d"/>
       </button>
       {

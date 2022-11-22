@@ -88,10 +88,8 @@ h2 {
   height: 500px;
   width: 300px;
   border-radius: 25px;
-  margin: 10px;
-  position: absolute;
+  position: fixed;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'NerkOne';
   font-size: 18px;
@@ -103,7 +101,7 @@ h2 {
   width: 250px;
   position: absolute;
   top: 80%;
-  left: 51%;
+  left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: space-between;
