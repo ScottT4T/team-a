@@ -45,7 +45,7 @@ function App() {
       setIsLoading(true);
       // setPets([...pets.slice(1)])
 
-      setPets((pets) => pets.filter((pet, index) => pet.id !== "1"));
+      setPets((pets) => pets.filter((pet, index) => pet.id !== id));
 
       // post request with direction
       setIsLoading(false);
@@ -60,6 +60,7 @@ function App() {
   return (
     <div className="body">
        <div className="main">
+          {!pets.length && <p style={{ color: 'white'}}>Sorry, no pets left</p>}
           {pets?.map(({ id, imageURL, name }, index) => (
             <>
             <TinderCard onCardLeftScreen={(direction) => removePetFromStack("",direction)} preventSwipe={['up', 'down']}>
@@ -72,10 +73,10 @@ function App() {
             </TinderCard>
             {true && (
                 <div className="buttonsContainer">
-                  <button className="button" onClick={() => removePetFromStack('','left')}>
+                  <button className="button" onClick={() => removePetFromStack(id,'left')}>
                     <FontAwesomeIcon icon={faCircleXmark} size="4x" className="CustomColor" color="#cd0000"/>
                   </button>
-                  <button className="button" onClick={() => removePetFromStack('','right')}>
+                  <button className="button" onClick={() => removePetFromStack(id,'right')}>
                     <FontAwesomeIcon icon={faHeart} size="4x" className="CustomColor" color="#00cd15"/>
                   </button>
                 </div>
