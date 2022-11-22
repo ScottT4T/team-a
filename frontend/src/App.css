@@ -93,6 +93,8 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: 'NerkOne';
+  font-size: 18px;
 }
 
 .buttonsContainer {

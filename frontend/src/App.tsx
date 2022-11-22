@@ -51,25 +51,29 @@ function App() {
 
   return (
     <div className="body">
-       <div className="main">
-          {pets?.map(({ id, url, name }) => (
-            <TinderCard onCardLeftScreen={(direction) => removePetFromStack(id, direction)} preventSwipe={['up', 'down']}>
-              <div className="card">
-                <div className="image">
-                  <img draggable="false" src={url} alt="pet" className="image"/>
-                </div>
-                <p style={{ margin: 8, fontSize: 30}}>{name}</p>
-              </div> 
-            </TinderCard>
-          ))}
-          <div className="buttonsContainer">
-            <button className="button" onClick={() => removePetFromStack(pets[0].id, 'left')}>
-              <FontAwesomeIcon icon={faCircleXmark} size="4x" className="CustomColor" color="#cd0000"/>
-            </button>
-            <button className="button" onClick={() => removePetFromStack(pets[0].id, 'right')}>
-                <FontAwesomeIcon icon={faHeart} size="4x" className="CustomColor" color="#00cd15"/>
-            </button>
-          </div>
+      <div className='title'>
+        <h1>Rate your</h1>
+        <h2>PETS</h2>
+      </div>
+      <div className="main">
+        {pets?.map(({ id, url, name }) => (
+          <TinderCard onCardLeftScreen={(direction) => removePetFromStack(id, direction)} preventSwipe={['up', 'down']}>
+            <div className="card">
+              <div className="image">
+                <img draggable="false" src={url} alt="pet" className="image"/>
+              </div>
+              <p style={{ margin: 8, fontSize: 30}}>{name}</p>
+            </div> 
+          </TinderCard>
+        ))}
+        <div className="buttonsContainer">
+          <button className="button" onClick={() => removePetFromStack(pets[0].id, 'left')}>
+            <FontAwesomeIcon icon={faCircleXmark} size="4x" className="CustomColor" color="#cd0000"/>
+          </button>
+          <button className="button" onClick={() => removePetFromStack(pets[0].id, 'right')}>
+              <FontAwesomeIcon icon={faHeart} size="4x" className="CustomColor" color="#00cd15"/>
+          </button>
+        </div>
       </div>
     </div>
   );

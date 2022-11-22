@@ -22,7 +22,7 @@ const highscores = () => {
         <div
           className={`medal-card medal-${index}`}
           style={{
-            backgroundImage: pet.url,
+            backgroundImage: pet.imageURL,
           }}
         >
           <div className='medal-title'>{pet.name}</div>

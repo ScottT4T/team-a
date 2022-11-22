@@ -1,7 +1,7 @@
 export type Pet = {
   id: number
   name: string
-  url: string
+  imageURL: string
   likeCount: number
 }
 
